@@ -140,16 +140,16 @@ You can see that we have multiple jobs running simultanousely to ensure the code
 ```yaml
     quality-gate:
         runs-on: ubuntu-latest
-        needs: ["coverage", "unittest", "code-vuln-scan"]
+        needs: ["code-coverage", "unittest", "code-vuln-scan"]
         steps:
         - uses: actions/checkout@v3
         - uses: actions/download-artifact@v3
-            with:
+          with:
             name: code-coverage-report
             path: ./src
         - run: python coverage.py 1
-            working-directory: ./src
-            name: Simple Quality Gate
+          working-directory: ./src
+          name: Simple Quality Gate
 ```
 
 - Commit and Push the code, then check github UI to see how the workflow is running
