@@ -171,7 +171,7 @@ This exercise will build the docker container image. However, since we haven't t
   docker-build:
     name: DockerBuild
     runs-on: ubuntu-latest
-    needs: ["quality-gate", "code-scan"]
+    needs: ["quality-gate"]
     steps:
       - uses: actions/checkout@v3
       - name: Build an image from Dockerfile
